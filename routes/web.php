@@ -15,14 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/', [HomeController::class]);
 
 Route::prefix('/product')->group(function(){
 
-Route::get('/', 'index');
+Route::get('/index', 'index');
 
 Route::get('/create', 'create');
 
