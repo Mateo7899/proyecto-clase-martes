@@ -18,13 +18,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/', [HomeController::class]);
 
-Route::get('/product', [ProductController::class, 'index']);
+Route::prefix('/product')->group(function(){
 
-Route::get('/product/create', [ProductController::class, 'create']);
+Route::get('/', 'index');
 
-Route::get('/product/(id)/(categoria)', [ProductController::class, 'show']);
+Route::get('/create', 'create');
 
+Route::get('/(id)/(categoria)', 'show');
 
+});
