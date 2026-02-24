@@ -129,24 +129,9 @@
         </div>
     </nav>
 
-    <div class="container">
-        <h2>Registro de Producto</h2>
-        <form>
-            <label for="nombre">Nombre del Producto</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre">
+    
 
-            <label for="precio">Precio</label>
-            <input type="number" id="precio" name="precio" placeholder="Ingrese el precio">
 
-            <label for="marca">Marca</label>
-            <input type="text" id="marca" name="marca" placeholder="Ingrese la marca">
-
-            <label for="descripcion">Descripción</label>
-            <textarea id="descripcion" name="descripcion" placeholder="Ingrese la descripción"></textarea>
-
-            <button type="submit">Registrar</button>
-        </form>
-    </div>
 
 </body>
 </html>
