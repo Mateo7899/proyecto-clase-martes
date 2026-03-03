@@ -11,7 +11,6 @@
 
                 <form action="{{ route('productos.store') }}" method="POST">
                     @csrf
-
                     <div class="mb-3">
                         <label for="name" style="font-weight: bold; color: #333; margin-bottom: 8px; display: block;">Nombre del Producto</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Ej: Laptop Gaming Pro 15" required style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
