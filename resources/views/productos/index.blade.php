@@ -25,18 +25,22 @@
                 <div class="product-card">
                     <!-- Product Image -->
                     <div class="product-image">
-                        @if(strpos($product->name, 'Laptop') !== false || strpos($product->name, 'laptop') !== false)
-                            <i class="fas fa-laptop"></i>
-                        @elseif(strpos($product->name, 'Desktop') !== false || strpos($product->name, 'computadora') !== false)
-                            <i class="fas fa-desktop"></i>
-                        @elseif(strpos($product->name, 'Monitor') !== false || strpos($product->name, 'monitor') !== false)
-                            <i class="fas fa-tv"></i>
-                        @elseif(strpos($product->name, 'Keyboard') !== false || strpos($product->name, 'teclado') !== false)
-                            <i class="fas fa-keyboard"></i>
-                        @elseif(strpos($product->name, 'Mouse') !== false || strpos($product->name, 'ratón') !== false)
-                            <i class="fas fa-mouse"></i>
+                        @if($product->imagen)
+                            <img src="{{ asset('storage/' . $product->imagen) }}" alt="{{ $product->name }}" style="width: 100%; height: 100%; object-fit: cover;">
                         @else
-                            <i class="fas fa-microchip"></i>
+                            @if(strpos($product->name, 'Laptop') !== false || strpos($product->name, 'laptop') !== false)
+                                <i class="fas fa-laptop"></i>
+                            @elseif(strpos($product->name, 'Desktop') !== false || strpos($product->name, 'computadora') !== false)
+                                <i class="fas fa-desktop"></i>
+                            @elseif(strpos($product->name, 'Monitor') !== false || strpos($product->name, 'monitor') !== false)
+                                <i class="fas fa-tv"></i>
+                            @elseif(strpos($product->name, 'Keyboard') !== false || strpos($product->name, 'teclado') !== false)
+                                <i class="fas fa-keyboard"></i>
+                            @elseif(strpos($product->name, 'Mouse') !== false || strpos($product->name, 'ratón') !== false)
+                                <i class="fas fa-mouse"></i>
+                            @else
+                                <i class="fas fa-microchip"></i>
+                            @endif
                         @endif
                     </div>
 

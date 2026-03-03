@@ -5,21 +5,25 @@
     <div class="row g-4">
         <!-- Product Image -->
         <div class="col-md-6">
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 40px; display: flex; align-items: center; justify-content: center; height: 400px; color: white;">
-                @if(strpos($product->name, 'Laptop') !== false || strpos($product->name, 'laptop') !== false)
-                    <i class="fas fa-laptop" style="font-size: 150px;"></i>
-                @elseif(strpos($product->name, 'Desktop') !== false || strpos($product->name, 'computadora') !== false)
-                    <i class="fas fa-desktop" style="font-size: 150px;"></i>
-                @elseif(strpos($product->name, 'Monitor') !== false || strpos($product->name, 'monitor') !== false)
-                    <i class="fas fa-tv" style="font-size: 150px;"></i>
-                @elseif(strpos($product->name, 'Keyboard') !== false || strpos($product->name, 'teclado') !== false)
-                    <i class="fas fa-keyboard" style="font-size: 150px;"></i>
-                @elseif(strpos($product->name, 'Mouse') !== false || strpos($product->name, 'ratón') !== false)
-                    <i class="fas fa-mouse" style="font-size: 150px;"></i>
-                @else
-                    <i class="fas fa-microchip" style="font-size: 150px;"></i>
-                @endif
-            </div>
+            @if($product->imagen)
+                <img src="{{ asset('storage/' . $product->imagen) }}" alt="{{ $product->name }}" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+            @else
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 40px; display: flex; align-items: center; justify-content: center; height: 400px; color: white;">
+                    @if(strpos($product->name, 'Laptop') !== false || strpos($product->name, 'laptop') !== false)
+                        <i class="fas fa-laptop" style="font-size: 150px;"></i>
+                    @elseif(strpos($product->name, 'Desktop') !== false || strpos($product->name, 'computadora') !== false)
+                        <i class="fas fa-desktop" style="font-size: 150px;"></i>
+                    @elseif(strpos($product->name, 'Monitor') !== false || strpos($product->name, 'monitor') !== false)
+                        <i class="fas fa-tv" style="font-size: 150px;"></i>
+                    @elseif(strpos($product->name, 'Keyboard') !== false || strpos($product->name, 'teclado') !== false)
+                        <i class="fas fa-keyboard" style="font-size: 150px;"></i>
+                    @elseif(strpos($product->name, 'Mouse') !== false || strpos($product->name, 'ratón') !== false)
+                        <i class="fas fa-mouse" style="font-size: 150px;"></i>
+                    @else
+                        <i class="fas fa-microchip" style="font-size: 150px;"></i>
+                    @endif
+                </div>
+            @endif
         </div>
 
         <!-- Product Details -->

@@ -9,7 +9,7 @@
                     <i class="fas fa-plus" style="color: #667eea; margin-right: 10px;"></i>Crear Nuevo Producto
                 </h2>
 
-                <form action="{{ route('productos.store') }}" method="POST">
+                <form action="{{ route('productos.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="name" style="font-weight: bold; color: #333; margin-bottom: 8px; display: block;">Nombre del Producto</label>
@@ -19,6 +19,19 @@
                     <div class="mb-3">
                         <label for="description" style="font-weight: bold; color: #333; margin-bottom: 8px; display: block;">Descripción</label>
                         <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe detalladamente el producto..." style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="imagen" style="font-weight: bold; color: #333; margin-bottom: 8px; display: block;">Imagen del Producto</label>
+                        <div style="border: 2px dashed #667eea; border-radius: 8px; padding: 20px; text-align: center; cursor: pointer;" id="imagenDropZone">
+                            <i class="fas fa-image" style="font-size: 32px; color: #667eea; display: block; margin-bottom: 10px;"></i>
+                            <p style="margin: 0; color: #667eea; font-weight: bold;">Arrastra una imagen aquí o haz clic para seleccionar</p>
+                            <small style="color: #999;">JPG, PNG, GIF - Máximo 2MB</small>
+                            <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" style="display: none;">
+                        </div>
+                        <div id="imagenPreview" style="margin-top: 15px; display: none;">
+                            <img id="previewImg" src="" alt="Preview" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
+                        </div>
                     </div>
 
                     <div class="row">
@@ -50,6 +63,49 @@
                         </a>
                     </div>
                 </form>
+
+                <script>
+                    const imagenInput = document.getElementById('imagen');
+                    const imagenDropZone = document.getElementById('imagenDropZone');
+                    const imagenPreview = document.getElementById('imagenPreview');
+                    const previewImg = document.getElementById('previewImg');
+
+                    // Click para seleccionar archivo
+                    imagenDropZone.addEventListener('click', () => imagenInput.click());
+
+                    // Drag and drop
+                    imagenDropZone.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                        imagenDropZone.style.background = '#f0f0ff';
+                    });
+
+                    imagenDropZone.addEventListener('dragleave', () => {
+                        imagenDropZone.style.background = 'transparent';
+                    });
+
+                    imagenDropZone.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        imagenDropZone.style.background = 'transparent';
+                        const files = e.dataTransfer.files;
+                        if (files.length > 0) {
+                            imagenInput.files = files;
+                            mostrarPreview();
+                        }
+                    });
+
+                    imagenInput.addEventListener('change', mostrarPreview);
+
+                    function mostrarPreview() {
+                        if (imagenInput.files && imagenInput.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                previewImg.src = e.target.result;
+                                imagenPreview.style.display = 'block';
+                            };
+                            reader.readAsDataURL(imagenInput.files[0]);
+                        }
+                    }
+                </script>
             </div>
         </div>
     </div>
