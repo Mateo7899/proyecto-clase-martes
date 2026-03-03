@@ -15,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('productos', HomeController::class);
-
-Route::prefix('/product')->group(function(){
-
-
+Route::get('/', function () {
+    return redirect()->route('productos.index');
 });
+
+Route::resource('productos', ProductController::class);
