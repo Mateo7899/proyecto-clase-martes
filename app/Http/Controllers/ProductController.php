@@ -9,7 +9,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        // traer productos en bloques de 9 usando paginación simple
+        $products = Product::orderBy('created_at', 'desc')->simplePaginate(9);
         return view('productos.index', compact('products'));
     }
 

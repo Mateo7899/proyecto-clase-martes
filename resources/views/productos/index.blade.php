@@ -18,9 +18,8 @@
         </a>
     </div>
 
-    @if($products->count() > 0)
-        <div class="row g-4">
-            @foreach($products as $product)
+    <div class="row g-4">
+        @forelse($products as $product)
             <div class="col-md-6 col-lg-4">
                 <div class="product-card">
                     <!-- Product Image -->
@@ -85,17 +84,34 @@
                     </div>
                 </div>
             </div>
-            @endforeach
-        </div>
-    @else
-        <div class="alert alert-info text-center py-5">
-            <i class="fas fa-inbox" style="font-size: 48px; margin-bottom: 20px; display: block;"></i>
-            <h4>No hay productos disponibles</h4>
-            <p>¡Comienza agregando tu primer producto!</p>
-            <a href="{{ route('productos.create') }}" class="btn btn-primary mt-3">
-                <i class="fas fa-plus"></i> Crear Primer Producto
-            </a>
-        </div>
-    @endif
+        @empty
+            <div class="col-12">
+                <div class="alert alert-info text-center py-5">
+                    <i class="fas fa-inbox" style="font-size: 48px; margin-bottom: 20px; display: block;"></i>
+                    <h4>No hay productos disponibles</h4>
+                    <p>¡Comienza agregando tu primer producto!</p>
+                    <a href="{{ route('productos.create') }}" class="btn btn-primary mt-3">
+                        <i class="fas fa-plus"></i> Crear Primer Producto
+                    </a>
+                </div>
+            </div>
+        @endforelse
+    </div>
+
+    {{-- navegación manual --}}
+    <div class="d-flex justify-content-between mt-4">
+        @if($products->previousPageUrl())
+            <a href="{{ $products->previousPageUrl() }}" class="btn btn-secondary">&laquo; Anterior</a>
+        @else
+            <span></span>
+        @endif
+
+        @if($products->nextPageUrl())
+            <a href="{{ $products->nextPageUrl() }}" class="btn btn-secondary">Siguiente &raquo;</a>
+        @else
+            <span></span>
+        @endif
+    </div>
+
 </div>
 @endsection
