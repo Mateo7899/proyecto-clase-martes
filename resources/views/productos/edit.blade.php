@@ -26,7 +26,7 @@
                     @if($product->imagen)
                     <div class="mb-3">
                         <label style="font-weight: bold; color: #333; margin-bottom: 8px; display: block;">Imagen Actual</label>
-                        <img src="{{ asset('storage/' . $product->imagen) }}" alt="{{ $product->name }}" style="max-width: 100%; max-height: 250px; border-radius: 8px;">
+                        <img src="/storage/{{ $product->imagen }}" alt="{{ $product->name }}" style="max-width: 100%; max-height: 250px; border-radius: 8px;">
                     </div>
                     @endif
 

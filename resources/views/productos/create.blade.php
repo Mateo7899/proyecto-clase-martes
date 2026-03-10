@@ -8,12 +8,29 @@
                 <h2 style="margin-bottom: 30px; color: #333;">
                     <i class="fas fa-plus" style="color: #667eea; margin-right: 10px;"></i>Crear Nuevo Producto
                 </h2>
-
                 <form action="{{ route('productos.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+
+                    @if($errors->any())
+                        <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; border: 1px solid #f5c6cb; margin-bottom: 20px;">
+                            <strong>¡Error!</strong> Por favor corrige los siguientes errores:
+                            <ul style="margin-top: 10px; margin-bottom: 0;">
+                                @if($errors->has('name'))
+                                    <li>El nombre del producto es requerido</li>
+                                @endif
+                                @if($errors->has('price'))
+                                    <li>El precio es requerido</li>
+                                @endif
+                                @if($errors->has('category_id'))
+                                    <li>La categoría es requerida</li>
+                                @endif
+                            </ul>
+                        </div>
+                    @endif
+
                     <div class="mb-3">
                         <label for="name" style="font-weight: bold; color: #333; margin-bottom: 8px; display: block;">Nombre del Producto</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Ej: Laptop Gaming Pro 15" required style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Ej: Laptop Gaming Pro 15" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
                     </div>
 
                     <div class="mb-3">
@@ -39,13 +56,13 @@
                             <label for="price" style="font-weight: bold; color: #333; margin-bottom: 8px; display: block;">Precio</label>
                             <div style="display: flex; align-items: center;">
                                 <span style="font-weight: bold; margin-right: 5px; color: #667eea;">$</span>
-                                <input type="number" class="form-control" id="price" name="price" step="0.01" placeholder="0.00" required style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                                <input type="number" class="form-control" id="price" name="price" step="0.01" placeholder="0.00" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
                             </div>
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label for="category_id" style="font-weight: bold; color: #333; margin-bottom: 8px; display: block;">Categoría</label>
-                            <select class="form-control" id="category_id" name="category_id" required style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                            <select class="form-control" id="category_id" name="category_id" style="padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
                                 <option value="">-- Seleccionar categoría --</option>
                                 @foreach(\App\Models\category::all() as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>

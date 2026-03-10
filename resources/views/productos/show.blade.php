@@ -6,7 +6,7 @@
         <!-- Product Image -->
         <div class="col-md-6">
             @if($product->imagen)
-                <img src="{{ asset('storage/' . $product->imagen) }}" alt="{{ $product->name }}" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                <img src="/storage/{{ $product->imagen }}" alt="{{ $product->name }}" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
             @else
                 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 40px; display: flex; align-items: center; justify-content: center; height: 400px; color: white;">
                     @if(strpos($product->name, 'Laptop') !== false || strpos($product->name, 'laptop') !== false)

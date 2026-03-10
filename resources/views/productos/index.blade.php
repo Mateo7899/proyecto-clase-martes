@@ -26,7 +26,7 @@
                     <!-- Product Image -->
                     <div class="product-image">
                         @if($product->imagen)
-                            <img src="{{ asset('storage/' . $product->imagen) }}" alt="{{ $product->name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="/storage/{{ $product->imagen }}" alt="{{ $product->name }}" style="width: 100%; height: 100%; object-fit: cover;">
                         @else
                             @if(strpos($product->name, 'Laptop') !== false || strpos($product->name, 'laptop') !== false)
                                 <i class="fas fa-laptop"></i>
