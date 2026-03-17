@@ -57,9 +57,12 @@
 
             <!-- Action Buttons -->
             <div style="margin-top: 30px; display: flex; gap: 15px;">
-                <button style="flex: 1; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;">
-                    <i class="fas fa-shopping-cart"></i> Agregar al Carrito
-                </button>
+                <form action="{{ route('cart.add', $product->id) }}" method="POST" style="flex: 1;">
+                    @csrf
+                    <button type="submit" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px;">
+                        <i class="fas fa-shopping-cart"></i> Agregar al Carrito
+                    </button>
+                </form>
                 <a href="{{ route('productos.edit', $product->id) }}" style="flex: 1; padding: 15px; background: #f0f0f0; color: #667eea; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;">
                     <i class="fas fa-edit"></i> Editar
                 </a>

@@ -224,11 +224,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('productos.create') }}">Agregar Producto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-shopping-cart"></i> Carrito (0)
-                        </a>
-                    </li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cart.index') }}">
+                                <i class="fas fa-shopping-cart"></i> Carrito ({{ \App\Models\cartitems::where('user_id', auth()->id())->sum('quantity') }})
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/home') }}">Panel</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>
