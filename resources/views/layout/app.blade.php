@@ -231,6 +231,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.index') }}">
+                                <i class="fas fa-cogs"></i> Admin
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ url('/home') }}">Panel</a>
                         </li>
                     @else

@@ -140,6 +140,7 @@
                     <a href="#" style="margin: 0 15px; text-decoration: none; color: #333;">Contacto</a>
                     @auth
                         <a href="{{ route('cart.index') }}" style="margin: 0 15px; text-decoration: none; color: #333;"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                        <a href="{{ route('admin.index') }}" style="margin: 0 15px; text-decoration: none; color: #333;"><i class="fas fa-cogs"></i> Admin</a>
                         <a href="{{ url('/home') }}" style="margin: 0 15px; text-decoration: none; color: #333;">Panel</a>
                     @else
                         <a href="{{ route('login') }}" style="margin: 0 15px; text-decoration: none; color: #333;">Iniciar Sesión</a>
